@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+
+{% block title %}Add Order{% endblock %}
+
+{% block content %}
+
+<h1 class="text-2xl font-semibold text-zinc-100 mb-8">
+    {% if object %}Update Order{% else %}Create Order{% endif %}
+</h1>
+
+<div class="max-w-lg">
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-4">
+            {{ form.client.label_tag }}
+            {{ form.client }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.item.label_tag }}
+            {{ form.item }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.quantity.label_tag }}
+            {{ form.quantity }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.status.label_tag }}
+            {{ form.status }}
+        </div>
+
+        <button type="submit"
+            class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-6 py-2 rounded transition-colors">
+            Add Order
+        </button>
+    </form>
+</div>
+
+{% endblock %}

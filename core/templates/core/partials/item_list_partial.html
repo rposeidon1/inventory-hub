@@ -1,0 +1,28 @@
+<h1 class="text-2xl font-semibold text-zinc-100 mb-6">All Items</h1>
+
+<table class="w-full text-sm text-zinc-300">
+    <tr class="border-b border-zinc-800 text-zinc-500 text-left">
+        <th class="pb-3 font-medium">Name</th>
+        <th class="pb-3 font-medium">Quantity</th>
+        <th class="pb-3 font-medium">Price</th>
+        <th class="pb-3 font-medium">Low Stock Threshold</th>
+        <th class="pb-3 font-medium"></th>
+    </tr>
+    {% for item in items %}
+    <tr class="border-b border-zinc-800 hover:bg-zinc-900 transition-colors">
+        <td class="py-3">{{ item.name }}</td>
+        <td class="py-3">{{ item.quantity }}</td>
+        <td class="py-3">${{ item.price }}</td>
+        <td class="py-3">{{ item.low_stock_threshold }}</td>
+        <td class="py-3">
+            <button
+                hx-get="{% url 'modal_update_item' item.pk %}"
+                hx-target="#modal-container"
+                hx-swap="innerHTML"
+                class="text-indigo-400 hover:text-indigo-300 text-xs font-medium transition-colors">
+                Edit
+            </button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

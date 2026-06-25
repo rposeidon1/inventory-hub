@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inventory Hub{% endblock %}</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser"></script> {# = #}
+    <style type="text/tailwindcss">
+        input, textarea, select {
+            @apply w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 mt-1;
+        }
+        label {
+            @apply block text-sm text-zinc-400;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen">
+    <nav class="bg-zinc-900 border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
+        <span class="text-lg font-semibold tracking-tight">Inventory Hub</span>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="text-sm text-zinc-400 hover:text-red-400 transition-colors">Logout</button>
+        </form>
+    </nav>
+    <main class="max-w-6xl mx-auto px-6 py-8">
+        {% block content %}{% endblock %}
+        <div id="modal-container"></div> {# = #}
+    </main>
+</body>
+</html>

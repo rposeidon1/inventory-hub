@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+
+{% block title %}CRM & Inventory Hub{% endblock %}
+
+{% block content %}
+
+<h1 class="text-2xl font-semibold text-zinc-100 mb-2">Low Stock Alerts</h1>
+<p class="text-zinc-400 text-sm mb-6">The following items have fallen below their minimum stock thresholds:</p>
+
+{% if low_stock_items %}
+    <table class="w-full text-sm text-zinc-300">
+        <thead>
+            <tr class="border-b border-zinc-800 text-zinc-500 text-left">
+                <th class="pb-3 font-medium">Item Name</th>
+                <th class="pb-3 font-medium">Current Quantity</th>
+                <th class="pb-3 font-medium">Low Stock Threshold</th>
+                <th class="pb-3 font-medium">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in low_stock_items %}
+            <tr class="border-b border-zinc-800 hover:bg-zinc-900 transition-colors">
+                <td class="py-3 text-amber-400">{{ item.name }}</td>
+                <td class="py-3 text-amber-400">{{ item.quantity }}</td>
+                <td class="py-3">{{ item.low_stock_threshold }}</td>
+                <td class="py-3">${{ item.price|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="text-emerald-400 text-sm">All inventory items are fully stocked.</p>
+{% endif %}
+
+{% endblock %}

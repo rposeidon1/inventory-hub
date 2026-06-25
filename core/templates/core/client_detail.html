@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+
+{% block title %}About Client{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-semibold text-zinc-100 mb-6">Client's Detail</h1>
+
+<table class="w-full max-w-lg text-sm text-zinc-300">
+    <tbody>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium w-40">First Name</th>
+            <td class="py-3">{{ client.first_name }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Last Name</th>
+            <td class="py-3">{{ client.last_name }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Email</th>
+            <td class="py-3">{{ client.email }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Phone</th>
+            <td class="py-3">{{ client.phone }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Company</th>
+            <td class="py-3">{{ client.company }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

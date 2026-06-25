@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+
+{% block title %}About Item{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-semibold text-zinc-100 mb-6">Item Details</h1>
+
+<table class="w-full max-w-lg text-sm text-zinc-300">
+    <tbody>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium w-48">Name</th>
+            <td class="py-3">{{ item.name }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Description</th>
+            <td class="py-3">{{ item.description }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Price</th>
+            <td class="py-3">${{ item.price }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Quantity</th>
+            <td class="py-3">{{ item.quantity }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Low Stock Threshold</th>
+            <td class="py-3">{{ item.low_stock_threshold }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

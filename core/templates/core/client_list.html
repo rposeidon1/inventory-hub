@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+
+{% block title %}Client List{% endblock %}
+
+{% block content %}
+
+<input
+  type="text"
+  name="q"
+  placeholder="Search..."
+  hx-get="{% url 'clients' %}"
+  hx-trigger="keyup changed delay:300ms"
+  hx-target="#object-list"
+  hx-swap="innerHTML"
+  class="w-full max-w-sm bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder-zinc-500 rounded px-4 py-2 text-sm focus:outline-none focus:border-indigo-500 mb-6"
+>
+
+<div id="object-list">
+  {% include 'core/partials/client_list_partial.html' %}
+</div>
+
+{% endblock %}

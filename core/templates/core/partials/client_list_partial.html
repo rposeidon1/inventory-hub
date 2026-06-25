@@ -1,0 +1,29 @@
+<h1 class="text-2xl font-semibold text-zinc-100 mb-6">All Clients</h1>
+<table class="w-full text-sm text-zinc-300">
+    <tr class="border-b border-zinc-800 text-zinc-500 text-left">
+        <th class="pb-3 font-medium">First Name</th>
+        <th class="pb-3 font-medium">Last Name</th>
+        <th class="pb-3 font-medium">Email</th>
+        <th class="pb-3 font-medium">Phone</th>
+        <th class="pb-3 font-medium">Company</th>
+        <th class="pb-3 font-medium"></th>
+    </tr>
+    {% for client in clients %}
+    <tr class="border-b border-zinc-800 hover:bg-zinc-900 transition-colors">
+        <td class="py-3">{{ client.first_name }}</td>
+        <td class="py-3">{{ client.last_name }}</td>
+        <td class="py-3">{{ client.email }}</td>
+        <td class="py-3">{{ client.phone }}</td>
+        <td class="py-3">{{ client.company }}</td>
+        <td class="py-3">
+            <button
+                hx-get="{% url 'modal_update_client' client.pk %}"
+                hx-target="#modal-container"
+                hx-swap="innerHTML"
+                class="text-indigo-400 hover:text-indigo-300 text-xs font-medium transition-colors">
+                Edit
+            </button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

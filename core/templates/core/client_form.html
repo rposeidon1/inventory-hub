@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+
+{% block title %}Add Client{% endblock %}
+
+{% block content %}
+
+<p class="text-xs text-zinc-500 uppercase tracking-widest mb-2">
+    {% if object %}Update Client{% else %}Create Client{% endif %}
+</p>
+<h1 class="text-2xl font-semibold text-zinc-100 mb-8">Add new client</h1>
+
+<div class="max-w-lg">
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-4">
+            {{ form.first_name.label_tag }}
+            {{ form.first_name }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.last_name.label_tag }}
+            {{ form.last_name }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.phone.label_tag }}
+            {{ form.phone }}
+        </div>
+
+        <div class="mb-4">
+            {{ form.company.label_tag }}
+            {{ form.company }}
+        </div>
+
+        <button type="submit"
+            class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-6 py-2 rounded transition-colors">
+            Add Client
+        </button>
+    </form>
+</div>
+
+{% endblock %}

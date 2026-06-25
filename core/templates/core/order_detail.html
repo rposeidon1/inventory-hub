@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+
+{% block title %}About Order{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-semibold text-zinc-100 mb-6">Order Details</h1>
+
+<table class="w-full max-w-lg text-sm text-zinc-300">
+    <tbody>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium w-48">Client</th>
+            <td class="py-3">{{ order.client }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Item</th>
+            <td class="py-3">{{ order.item }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Quantity</th>
+            <td class="py-3">{{ order.quantity }}</td>
+        </tr>
+        <tr class="border-b border-zinc-800">
+            <th class="py-3 text-left text-zinc-500 font-medium">Status</th>
+            <td class="py-3">
+                {% if order.status == "pending" %}
+                    <span class="text-amber-400">{{ order.status }}</span>
+                {% elif order.status == "fulfilled" %}
+                    <span class="text-emerald-400">{{ order.status }}</span>
+                {% else %}
+                    <span class="text-red-400">{{ order.status }}</span>
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
