@@ -16,16 +16,32 @@
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen">
+
     <nav class="bg-zinc-900 border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
         <span class="text-lg font-semibold tracking-tight">Inventory Hub</span>
+
+        {% if user.is_authenticated %}
+            <div class="flex items-center gap-6">
+                <a href="{% url 'clients' %}" class="text-sm text-zinc-400 hover:text-white transition-colors">Clients</a>
+                <a href="{% url 'items' %}" class="text-sm text-zinc-400 hover:text-white transition-colors">Inventory</a>
+                <a href="{% url 'orders' %}" class="text-sm text-zinc-400 hover:text-white transition-colors">Orders</a>
+
+                {% if user.is_superuser %}
+                    <a href="{% url 'admin:index' %}" class="text-sm text-amber-400 hover:text-amber-300 transition-colors">Admin Panel</a>
+                {% endif %}
+            </div>
+        {% endif %}
+
         <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
             <button type="submit" class="text-sm text-zinc-400 hover:text-red-400 transition-colors">Logout</button>
         </form>
     </nav>
+
     <main class="max-w-6xl mx-auto px-6 py-8">
         {% block content %}{% endblock %}
         <div id="modal-container"></div> {# = #}
     </main>
+
 </body>
 </html>
